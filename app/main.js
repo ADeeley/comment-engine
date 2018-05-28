@@ -13,7 +13,33 @@ const rootComments = [{
 		reply(userNameString, commentString) {
 			this.replies.push(newComment(userNameString, commentString));
 		}
-	}],
+	},
+	{
+		userName: 'userD',
+		comment: `I'm a subcomment`,
+		date: new Date(),
+		replies: [
+			{
+		userName: 'userE',
+		comment: `I'm a subcomment`,
+		date: new Date(),
+		replies: [],
+		print() {
+			console.log(`${this.userName} , ${this.comment}`);
+		},
+		reply(userNameString, commentString) {
+			this.replies.push(newComment(userNameString, commentString));
+		}
+	}
+		],
+		print() {
+			console.log(`${this.userName} , ${this.comment}`);
+		},
+		reply(userNameString, commentString) {
+			this.replies.push(newComment(userNameString, commentString));
+		}
+	}
+	],
 	print() {
 		console.log(`${this.userName} , ${this.comment}`);
 	},
