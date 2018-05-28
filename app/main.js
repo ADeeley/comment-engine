@@ -2,7 +2,18 @@ const rootComments = [{
 	userName: 'userA',
 	comment: `I'm a tool!`,
 	date: new Date(),
-	replies: [],
+	replies: [{
+		userName: 'userC',
+		comment: `I'm a subcomment`,
+		date: new Date(),
+		replies: [],
+		print() {
+			console.log(`${this.userName} , ${this.comment}`);
+		},
+		reply(userNameString, commentString) {
+			this.replies.push(newComment(userNameString, commentString));
+		}
+	}],
 	print() {
 		console.log(`${this.userName} , ${this.comment}`);
 	},
@@ -39,8 +50,8 @@ angular.module('app', [])
 				comment: commentString,
 				date: new Date(),
 				replies: [],
-				print() {
-					console.log(`${this.userName} , ${this.comment}`);
+				hasComments() {
+					return 
 				},
 				reply(userNameString, commentString) {
 					this.replies.push(newComment(userNameString, commentString));

@@ -4,8 +4,14 @@
 	<p class="comment__date">{{comment.date}}</p>
 	<button ng-click="reply()" class="comment__reply-button">{{replying ? 'Cancel' : 'Reply'}}</button>
 	<form ng-if="replying">
-		Username<input type="text">
-		Comment<input type="text">
+		Username
+		<input type="text"> Comment
+		<input type="text">
+		<button type="submit">Submit</button>
 	</form>
-	<div class="comment__children"></div>
+	<div ng-if="comment.replies.length > 0">
+		<div ng-repeat="comment in comment.replies" class="comment__children">
+			<comment-body></comment-body>
+		</div>
+	</div>
 </div>
