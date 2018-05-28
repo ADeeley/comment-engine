@@ -1,0 +1,7 @@
+.comment-container {
+	margin: 0;
+}
+.comment {
+	padding-left: 30px;
+	border-left: 1px solid darkblue;
+}
