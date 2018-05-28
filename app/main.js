@@ -7,12 +7,6 @@ const rootComments = [{
 		comment: `I'm a subcomment`,
 		date: new Date(),
 		replies: [],
-		print() {
-			console.log(`${this.userName} , ${this.comment}`);
-		},
-		reply(userNameString, commentString) {
-			this.replies.push(newComment(userNameString, commentString));
-		}
 	},
 	{
 		userName: 'userD',
@@ -20,70 +14,39 @@ const rootComments = [{
 		date: new Date(),
 		replies: [
 			{
-		userName: 'userE',
-		comment: `I'm a subcomment`,
-		date: new Date(),
-		replies: [],
-		print() {
-			console.log(`${this.userName} , ${this.comment}`);
-		},
-		reply(userNameString, commentString) {
-			this.replies.push(newComment(userNameString, commentString));
-		}
-	}
+				userName: 'userE',
+				comment: `I'm a subcomment`,
+				date: new Date(),
+				replies: [],
+			}
 		],
-		print() {
-			console.log(`${this.userName} , ${this.comment}`);
-		},
-		reply(userNameString, commentString) {
-			this.replies.push(newComment(userNameString, commentString));
-		}
-	}
-	],
-	print() {
-		console.log(`${this.userName} , ${this.comment}`);
-	},
-	reply(userNameString, commentString) {
-		this.replies.push(newComment(userNameString, commentString));
-	}
+	}],
 }, {
 	userName: 'userB',
 	comment: `I'm a unicorn`,
 	date: new Date(),
 	replies: [],
-	print() {
-		console.log(`${this.userName} , ${this.comment}`);
-	},
-	reply(userNameString, commentString) {
-		this.replies.push(newComment(userNameString, commentString));
-	}
 }]
 
 angular.module('app', [])
 	.controller('commentEngine', function ($scope) {
 		$scope.comments = rootComments;
 	})
-	.controller('commentCtrl', function($scope) {
+	.controller('commentCtrl', function ($scope) {
 		$scope.replying = false;
-		$scope.buttonMessage = "Reply";
-		$scope.reply = function () {
+		$scope.buttonMessage = "reply";
+		$scope.userName = '';
+		$scope.commentString = '';
+		$scope.openResponseBox = function () {
 			$scope.replying = !$scope.replying;
-			console.log($scope.replying);
 		}
-		$scope.newComment = function (userNameString, commentString) {
+		$scope.reply = function () {
 			this.comment.replies.push({
-				userName: userNameString,
-				comment: commentString,
+				userName: this.userName,
+				comment: this.commentString,
 				date: new Date(),
 				replies: [],
-				hasComments() {
-					return 
-				},
-				reply(userNameString, commentString) {
-					this.replies.push(newComment(userNameString, commentString));
-				}
 			})
-			console.log('done');
 		}
 	})
 	.directive('commentBody', function () {
